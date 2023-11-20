@@ -1,0 +1,276 @@
+:root {
+    --A: #EBAC7D;
+    --B: #479C96;
+    --C: #DF8D4B;
+    --D: #FDE4C8;
+}
+
+html, body {
+    text-align: center;
+    background-color: var(--A);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Single Day', cursive;
+    font-size: 20px;
+}
+
+header {
+    font-family: 'Single Day', cursive;
+    font-size: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content:space-around;
+    background-color: var(--B);
+}
+
+p {
+    color: white;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--D);
+}
+
+#logo a {
+    color: var(--D);
+    text-decoration: none;
+}
+
+#paw {
+    width: 30px;
+    height: 30px;
+    background-image: url('imagens/paw.png'); 
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#escolher {
+    display: flex;
+    gap: 0;
+    justify-content: left;
+    align-items: flex-start;
+    max-width: 400px;
+    height: 100px;
+}
+
+#escolher>img {
+    width: 140px;
+    cursor: pointer;
+    transition: transform 1s;
+}
+
+#escolher>img:hover {
+    transform: scale(1.4);
+}
+
+#botoes {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 20px;
+}
+
+#botao-sobre {
+    background-color: var(--C);
+    color: var(--D);
+    border-radius: 50px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.logos {
+    width: 130px;
+}
+
+#mensagem {
+    font-family: 'Vibur', cursive;
+    color: var(--D);
+    text-align: left;
+    font-size: 35px; 
+    padding: 20px;
+}
+
+/* Configuraçoes do Jogo */
+
+#gato {
+    position: absolute;
+    width: 200px;
+    bottom: 100px;
+    left: 20px;
+}
+
+#chao, #chao2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.animar-chao {
+    animation: mover 3s infinite linear;
+}
+
+.animar-chao2 {
+    animation: mover2 3s infinite linear;
+}
+
+.pular {
+    animation: pular 1300ms ease-out;
+}
+
+@keyframes mover {
+    
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    } 
+}
+
+@keyframes mover2 {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    } 
+}
+
+@keyframes pular {
+    
+    0% {
+        bottom: 100px;
+    }
+
+    40% {
+        bottom: 500px;
+    }
+
+    50% {
+        bottom: 500px;
+    }
+
+    60% {
+        bottom: 500px;
+    }
+
+    100% {
+        bottom: 100px;
+    }
+}
+
+.sumir {
+    animation: sumir 2s forwards;
+}
+
+@keyframes sumir {
+    from {
+        color: var(--D);
+    }
+
+    to {
+        color: var(--A);
+    }
+}
+
+.obstaculo {
+    position: absolute;
+    bottom: 100px;
+    /* começa fora da tela */
+    right: -200px;
+    width: 200px;
+}
+
+.animar-obstaculo {
+    animation: animacao-obstaculo 3.4s infinite linear forwards;
+}
+
+@keyframes animacao-obstaculo {
+    
+    from {
+        /* começa fora da tela */
+        right: -200px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+
+#pontuacao {
+    float: right;
+    margin: 20px;
+    color: aliceblue;
+}
+
+#recomecar {
+    font-family: 'Single Day', cursive;
+    font-size: 20px;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    color: var(--C);
+    cursor: pointer;
+}
+
+.infos {
+    display: none;
+}
+
+.infos.ativa{
+    position: absolute;
+    top: 100px;
+    display: flex;
+    background-color: var(--D);
+    color: var(--B);
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.infos img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.infos ul {
+    padding: 0;
+    list-style: none;
+}
+
+#warning {
+    display: none;
+}
+
+
+
+@media screen and (max-width: 900px) {
+
+    header {
+        font-size: 14px;
+        padding-inline: 10px;
+        padding-bottom: 10px;
+    }
+
+    main {
+        display: none;
+    }
+
+    #warning {
+        display: block;
+        color: var(--D);
+        font-size: 24px;
+    }
+}
