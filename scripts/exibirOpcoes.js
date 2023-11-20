@@ -28,8 +28,8 @@ export default function exibirOpcoes(event, div) {
     } else if(opcao == "imagens/paw-3.png") {
 
         imagem.setAttribute("src", "imagens/fotos/gato3.png");
-        titulo.innerText = "Ferrugem";
-        lista.innerHTML = "<li>Muito carinhoso e meigo</li>";
+        titulo.innerText = "Lucio";
+        lista.innerHTML = "<li>Charmoso</li><li>Comilão</li>";
 
         div.style.left = pata.offsetLeft + "px";
     }
