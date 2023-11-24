@@ -68,6 +68,7 @@ document.addEventListener("keydown", () => {
     const verificador = setInterval(() => {
 
         if(verificarColisao(gato, chao, chao2, obstaculo, enderecoGato)) {
+            iniciou = false;
             clearInterval(verificador);
         }
     
@@ -78,11 +79,13 @@ document.addEventListener("keydown", () => {
     const contadorDePontos = setInterval(()=> {
 
         if(verificarColisao(gato, chao, chao2, obstaculo, enderecoGato)) {
+            iniciou = false;
             clearInterval(contadorDePontos);
         }
 
-        pontos.innerText++;
-
+        if(iniciou) {
+            pontos.innerText++;
+        }
     }, 100);
     
 });
