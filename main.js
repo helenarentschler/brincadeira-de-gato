@@ -18,6 +18,7 @@ const menu = document.querySelector("#escolher");
 const div = document.querySelector(".infos");
 
 let iniciou = false;
+let colidiu = false;
 let enderecoGato = "animacoes-gato/gato1";
 
 // Inicialmente, estes elementos nao existem na tela e devem ser criados via javascript 
@@ -60,7 +61,6 @@ menu.addEventListener("mouseout", () => {
     div.classList.remove("ativa");
 })
 
-
 document.addEventListener("keydown", () => {
 
     iniciou = iniciarJogo(mensagem, chao, chao2, gato, obstaculo, enderecoGato);
@@ -68,29 +68,32 @@ document.addEventListener("keydown", () => {
     const verificador = setInterval(() => {
 
         if(verificarColisao(gato, chao, chao2, obstaculo, enderecoGato)) {
-            iniciou = false;
+            colidiu = true;
             clearInterval(verificador);
         }
     
         mudarObstaculo(obstaculo);
     
     }, 10);
-
-    const contadorDePontos = setInterval(()=> {
-
-        if(verificarColisao(gato, chao, chao2, obstaculo, enderecoGato)) {
-            iniciou = false;
-            clearInterval(contadorDePontos);
-        }
-
-        if(iniciou) {
-            pontos.innerText++;
-        }
-    }, 100);
     
 });
 
+
+const contadorDePontos = setInterval(()=> {
+
+    if(iniciou && !colidiu) {
+        if(verificarColisao(gato, chao, chao2, obstaculo, enderecoGato)) {
+            if (colidiu) {
+                clearInterval(contadorDePontos);                
+            }
+        }
+        pontos.innerText++;
+    }
+
+}, 100);      
+
 document.addEventListener("keydown", (event) => {
+
     if(gato.getAttribute("src") != `imagens/${enderecoGato}/pulando.png` && !verificarColisao(gato, chao, chao2, obstaculo, enderecoGato)) {
         pular(event, gato, enderecoGato);
     }

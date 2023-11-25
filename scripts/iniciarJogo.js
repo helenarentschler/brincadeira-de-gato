@@ -9,7 +9,6 @@ export default function inicializar(mensagem, chao, chao2, gato, obstaculo, ende
     chao.classList.add("animar-chao");
 
     //animando gato
-    console.log(enderecoGato);
     gato.setAttribute("src", `imagens/${enderecoGato}/correndo.gif`);
 
     //animando obstaculo
